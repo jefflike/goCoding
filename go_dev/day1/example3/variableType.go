@@ -6,7 +6,7 @@ go的内建变量的类型
     uintptr（指针）
     (u)int, int8, ingt16, int32, int64, uintptr
 
-    rune是go语言的字符型，但是不同于其它语言的char，rune长度是32位的（4个字节），其实在现在的全球化
+    rune是go语言的字符型，但是不同于其它语言的char，rune长度是32位的（4个字节），其实在现在的全球化(汉字单个字utf8是三个字节（24位），Unicode都是两个字节(16位))
 	一个字符的char类型已经是一个坑了，所以rune更加好用。
 	byte就是一个字节长度的8位
     byte，rune
@@ -51,9 +51,10 @@ func trianagle(){
 	var c int
 	// math.Sqrt要求参数是一个浮点类型，但是我们的a与b都是整型，不能进行自动的类型转换
 	//需要我们手动进行类型转换
-	//同理我们math.Sqrt的结果也是浮点型，我们定义了int型的c接收就必须使用强制类型转换
+	//同理我们math.Sqrt的结果也是浮点型，我们定义了int型的c接收就必须强制类型转换
 	//c = int(math.Sqrt(a * a + b * b))
 	c = int(math.Sqrt(float64(a * a + b * b)))
+	fmt.Println(c)
 }
 
 func main() {
