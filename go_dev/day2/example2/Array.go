@@ -1,5 +1,8 @@
 /*
-go语言的数组是值类型
+go语言的数组是值传递类型
+go元使用数组时的函数里的形参必须是固定长度的，这样使用起来是很不方便的
+我们使用go元的数组通常是使用数组的切片
+
 */
 package main
 
@@ -7,7 +10,8 @@ import "fmt"
 
 func array1()  {
 	// 定义一个数组
-	var arr1 [5]int//[0 0 0 0 0]
+	var arr1 [5]int //[0 0 0 0 0]
+	//var arr1 = [5]int{1,2,3,4,5}
 
 	// :=要给数组赋初值
 	arr2 := [3]int{1,2,3}//[1 2 3]
@@ -43,8 +47,16 @@ func array1()  {
 	}
 }
 
-//go语言的数组是值类型的
+//go语言的数组是值类型的，也就是说，在函数内是不会改变函数外调用的数组的值的
 func array2( arr [3]int){
+	arr[0] = 100
+	for _,v :=range arr{
+		fmt.Println(v)//100,3,4,此处相当于将复制得来的数组改变了，但是外层的数组并没有改变
+	}
+}
+
+// 取指针
+func array3( arr *[3]int){
 	arr[0] = 100
 	for _,v :=range arr{
 		fmt.Println(v)//100,3,4,此处相当于将复制得来的数组改变了，但是外层的数组并没有改变
@@ -57,5 +69,9 @@ func main() {
 	array1()
 	//array2(arr1)//这里是会报错的，array2函数需要传入一个长度为3的数组，go语言里认为长度为3和长度为5的数组不是一个类型的，所以会飘红
 	array2(arr2)
-	fmt.Println(arr2)
+	fmt.Println(arr2)//[2 3 4]
+
+	//array3接收的是一个数组的指针，所以我们传一个arr的地址值进去
+	array3(&arr2)
+	fmt.Println(arr2)//[100 3 4]，此时是相当于引用传递的，所以会改变数组的值
 }
