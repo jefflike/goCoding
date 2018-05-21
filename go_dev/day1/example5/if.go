@@ -1,6 +1,8 @@
 /*
 go的条件判断语句中，if后面是不需要加括号的
 go的函数的返回值可以返回两个值
+go打印可以使用ioutil.ReadFile(),一行一行的打印可以使用Os.oppen(文件)，a := bufio.NewScaner(contents)
+遍历a.Scan(),打印a.Text()就是遍历打印出文件的数据
 */
 package main
 
