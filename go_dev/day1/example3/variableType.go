@@ -60,4 +60,6 @@ func trianagle(){
 func main() {
 	comp()
 	euler()
+	a := "我爱你北京"
+	fmt.Println(len(a))//15
 }
