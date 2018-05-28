@@ -1,6 +1,22 @@
+/*
+gopath环境变量，配置为src同级目录的绝对路径
+想要自动生成bin和pkg需要使用go install命令。
+除了要配置gopath还需要配置gobin。
+这三个目录是用来做什么的
+src：放源代码的目录
+bin：放可执行程序的目录
+pkg：放平台相关的库
+*/
 package main
 
 import "fmt"
+
+//执行这个文件最开始就会运行这个函数（不需要调用自动运行）
+//导入其他包时，如果其他包有init函数会在导入的时候执行
+//这一点与python的init文件在导包的执行情况比较相似
+func init(){
+	fmt.Println("初始化执行init")
+}
 
 func defer1(){
 	a := 10
