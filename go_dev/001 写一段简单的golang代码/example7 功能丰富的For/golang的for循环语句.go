@@ -43,7 +43,57 @@ func forever(){
 	}
 }
 
+func tes(){
+	s := 0
+	for i :=1; i<100; i++{
+		if i%2==0{continue}
+		s += i;
+
+	}
+	fmt.Println(s)
+}
+func tes1()  {
+	var a [5]int = [5]int{5,7,3,9,2}
+
+	for i:=0; i< len(a)-1; i++{
+		for j := 0;j < len(a) -i -1;j++  {
+			if a[j]>a[j+1]{
+				a[j], a[j+1] = a[j+1], a[j]
+			}
+		}
+	}
+
+	for s :=0; s< len(a);s++{
+		fmt.Println(a[s])
+	}
+}
+
+func DiGui( a int) int {
+	if a == 1{
+		return 1
+	}else {
+		return a + DiGui(a-1)
+	}
+
+}
+
+func diGui(a int) int  {
+	if(a == 1){
+		return 1
+	}
+	return a * diGui(a-1)
+}
+
 func main() {
+	sum := 0
+	for i :=1; i<=20; i++ {
+		sum += diGui(i)
+	}
+	fmt.Println(sum)
+
+	//fmt.Println(DiGui(100))
+
+	tes1()
 	fmt.Println(
 		convertToBin(5),
 		convertToBin(13),
