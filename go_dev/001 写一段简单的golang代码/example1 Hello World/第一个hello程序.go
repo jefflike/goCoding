@@ -15,10 +15,43 @@
 */
 package main
 
-import(
-	"fmt"
-)
+import "fmt"
+
+//func printhello(i int, ch chan string)  {
+//	for{
+//		ch <- fmt.Sprintf("hello world %d\n", i)
+//	}
+//}
+//
+//func main(){
+//	// 并发hello每一个goroutine与main同时并发执行，要想打印要注意主线程main中断一下
+//	ch := make(chan string)
+//	for i := 0; i < 1000; i++{
+//		go printhello(i, ch)
+//	}
+//	for{
+//		mes := <- ch
+//		fmt.Println(mes)
+//	}
+//
+//	//time.Sleep(time.Millisecond*10)
+//	//fmt.Println("hello world!")
+//}
+func printhello(i int, ch chan string)  {
+	for{
+		ch <- fmt.Sprintf("hello world from gorutine %d\n", i)
+	}
+}
 
 func main(){
-	fmt.Println("hello world!")
+	ch := make(chan string)
+
+	for i:=0;i<500;i++{
+		go printhello(i, ch)
+	}
+
+	for {
+		msg := <- ch
+		fmt.Println(msg)
+	}
 }
