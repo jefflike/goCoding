@@ -37,7 +37,7 @@ func array1()  {
 
 	//range还可以获得数组的值
 	for i, v:=range arr2{
-		fmt.Println(i, v)//1   2    3
+		fmt.Println(i, v)
 	}
 
 	//只要v的情况

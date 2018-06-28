@@ -40,6 +40,6 @@ func main() {
 	exchange1(&a,&b)
 	fmt.Println("a的值：",a,",b的值：",b)
 
-	exchange2(a, b)
+	a,b = exchange2(a, b)
 	fmt.Println("a的值：",a,",b的值：",b)
 }

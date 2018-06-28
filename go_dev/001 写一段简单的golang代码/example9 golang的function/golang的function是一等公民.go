@@ -15,7 +15,7 @@ import (
 func operation(op func(int, int) int,a, b int) int {
 	//打印出op的值
     p := reflect.ValueOf(op).Pointer() // 此时调用的p的指针内容是： 4761920
-    opName := runtime.FuncForPC(p).Name()//获取到这个指针的ame, 此时调用的p的指针内容是： main.add
+    opName := runtime.FuncForPC(p).Name()//获取到这个指针的name, 此时调用的p的指针内容是： main.add
     fmt.Println("此时调用的p的指针内容是：", opName)
     return op(a, b)
 }
