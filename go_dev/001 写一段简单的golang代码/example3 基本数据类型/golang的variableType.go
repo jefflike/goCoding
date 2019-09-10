@@ -21,45 +21,63 @@ go的内建变量的类型
 package main
 
 import (
-	"math/cmplx"
 	"fmt"
 	"math"
+	"math/cmplx"
 )
 
 //定义一个复数，求模长
-func comp(){
+func comp() {
 	//这样写就是一个复数
 	c := 3 + 4i
 	length := cmplx.Abs(c)
-	fmt.Println(length)// 5
+	fmt.Println(length) // 5
 }
 
 //使用复数验证一下欧拉函数
-func euler(){
-    //欧拉公式
-	value := cmplx.Pow(math.E, 1i * math.Pi) + 1
+func euler() {
+	//欧拉公式
+	value := cmplx.Pow(math.E, 1i*math.Pi) + 1
 	fmt.Println(value) //(0+1.2246467991473532e-16i)
 }
+
 /*
 ??欧拉公式的结果不是0？，我们的complex的类型是complex64与128，他的实部与虚部分别是32位和
 64位的float,float浮点型都是不够精准的
 */
 
 // 强制类型转换的小例子
-func trianagle(){
+func trianagle() {
 	a, b := 3, 4
 	var c int
 	// math.Sqrt要求参数是一个浮点类型，但是我们的a与b都是整型，不能进行自动的类型转换
 	//需要我们手动进行类型转换
 	//同理我们math.Sqrt的结果也是浮点型，我们定义了int型的c接收就必须强制类型转换
 	//c = int(math.Sqrt(a * a + b * b))
-	c = int(math.Sqrt(float64(a * a + b * b)))
+	c = int(math.Sqrt(float64(a*a + b*b)))
 	fmt.Println(c)
+}
+
+// 键盘输入的两种方式
+func input1() {
+	var a int // 声明变量a
+	fmt.Println("请输入:")
+	fmt.Scanf("%d", &a)
+	fmt.Println("a is ", a)
+}
+
+func input2() {
+	var b int // 声明变量a
+	fmt.Println("请输入:")
+	fmt.Scan(&b)
+	fmt.Println("b is ", b)
 }
 
 func main() {
 	comp()
 	euler()
 	a := "我爱你北京"
-	fmt.Println(len(a))//15
+	fmt.Println(len(a)) //15
+	//input1()
+	input2()
 }
